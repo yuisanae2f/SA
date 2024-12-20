@@ -31,7 +31,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
         puts("Choose an operation you're willing to do.");
         puts("By entering one character, you could choose it.");
         puts("- File separating [s]");
-        puts("- File merging [m]");    
+        puts("- File adding [a]");
 
         scanf("%c", g_buff);
 
@@ -68,7 +68,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
 
                 puts("Your file has been separated.");
             } goto __done_succesfully;
-            case 'm': {
+            case 'a': {
                 puts("Choose a directory to iterate so it could generate the original.");
                 std::cin >> g_TAR_IN;
                 puts("Choose a output file's name.");

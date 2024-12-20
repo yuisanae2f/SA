@@ -7,18 +7,18 @@ project(SA)
 set(_SA_File_SIZE 300000000 CACHE STRING "Max File Length")
 
 ae2f_CoreLibTent(
-    SA
+    libSA
     ${ae2f_LIBPREFIX}
     include SA 
     "src/SA.c"
     "include/SA.h"
 )
 
-link_libraries(SA)
+link_libraries(libSA)
 include_directories(include_bin)
 
 add_executable(
-    SepAdd
+    SA
     "src_bin/main.cpp"
     "src_bin/NameGen.cpp"
     "src_bin/StrGetPostNum.cpp"
