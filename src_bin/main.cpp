@@ -43,6 +43,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
                 std::cin >> g_TAR_IN;
 
                 _SA_File tar_in(g_TAR_IN.c_str(), "rb");
+                std::filesystem::path filename_raw(g_TAR_IN);
 
                 if(!tar_in.f) 
                 goto __target_not_found;
@@ -60,7 +61,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
                     tarinfcount = tar_in.FileCount(), 
                     i = 0; i < tarinfcount; i++
                 ) {
-                    _SA_NameGen(g_TAR_IN.c_str(), i);
+                    _SA_NameGen(filename_raw.filename().string().c_str(), i);
                     std::string _v = g_TAR_OUT + "/" + ___SA_NameGen_Str[0];
                     _SA_File out(_v.c_str(), "wb");
                     SA_sep(tar_in.f, out.f, i, _SA_File_SIZE);
