@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <filesystem>
 #include <SA.h>
-#include <string.h>
+#include <string>
 #include <vector>
 #include <iostream>
 #include <_SA_NameGen.hpp>
@@ -40,7 +40,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
         switch(g_buff[0]) {
             case 's': {
                 puts("Choose a file you're willing to read.");
-                std::cin >> g_TAR_IN;
+                std::getline(std::cin, g_TAR_IN);
 
                 _SA_File tar_in(g_TAR_IN.c_str(), "rb");
                 std::filesystem::path filename_raw(g_TAR_IN);
@@ -49,7 +49,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
                 goto __target_not_found;
 
                 puts("Choose a directory you're willing to copy the separates.");
-                std::cin >> g_TAR_OUT;
+                std::getline(std::cin, g_TAR_OUT);
 
                 if(!fs::exists(g_TAR_OUT))
                 if(!fs::create_directory(g_TAR_OUT))
@@ -71,9 +71,9 @@ int _main(int argc, const std::vector<std::string>& argv) {
             } goto __done_succesfully;
             case 'a': {
                 puts("Choose a directory to iterate so it could generate the original.");
-                std::cin >> g_TAR_IN;
+                std::getline(std::cin, g_TAR_IN);
                 puts("Choose a output file's name.");
-                std::cin >> g_TAR_OUT;
+                std::getline(std::cin, g_TAR_OUT);
                 if(!fs::exists(g_TAR_IN))
                 goto __target_not_found;
 
@@ -94,7 +94,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
                 for (const auto& file : files) {
                     _SA_File f(file.string().c_str(), "rb");
                     SA_add(out.f, &f.f, 1);
-                    std::cout << file.filename() << std::endl;
+                    puts(file.filename().string().c_str());
                 }
 
             } goto __done_succesfully;
