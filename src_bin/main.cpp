@@ -85,13 +85,13 @@ int _main(int argc, const std::vector<std::string>& argv) {
                 }
 
                 std::sort(files.begin(), files.end(), [](const fs::path& a, const fs::path& b) {
-                    return _SA_StrGetPostNum(a.c_str()) < _SA_StrGetPostNum(b.c_str());
+                    return _SA_StrGetPostNum(a.string().c_str()) < _SA_StrGetPostNum(b.string().c_str());
                 });
 
                 _SA_File out(g_TAR_OUT.c_str(), "w");
 
                 for (const auto& file : files) {
-                    _SA_File f(file.c_str(), "r");
+                    _SA_File f(file.string().c_str(), "r");
                     SA_add(out.f, &f.f, 1);
                     std::cout << file.filename() << std::endl;
                 }
