@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.10)
+project(SA)
+
+set(CMAKE_CXX_STANDARD 17)
 add_subdirectory(Core)
 link_libraries(Core)
 
-project(SA)
 
 set(_SA_File_SIZE 300000000 CACHE STRING "Max File Length")
 
