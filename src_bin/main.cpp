@@ -33,7 +33,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
         puts("- File separating [s]");
         puts("- File adding [a]");
 
-        scanf("%c", g_buff);
+        scanf("%c", g_buff); getchar();
 
         #include <_SA_File.hpp>
         namespace fs = std::filesystem;
