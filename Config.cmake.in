@@ -3,4 +3,4 @@
 include(CMakeFindDependencyMacro)
 
 include(CMakePackageConfigHelpers)
-include("${CMAKE_CURRENT_LIST_DIR}/CoreTargets.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/libSATargets.cmake")
