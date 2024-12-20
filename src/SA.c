@@ -15,7 +15,6 @@ void SA_sep(
 
     fseek(in, 0, SEEK_END);
     const long in_len = ftell(in);
-    if (in_len == EOF) return;
 
     long 
     istart = oidx * seplen,

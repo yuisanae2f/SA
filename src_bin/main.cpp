@@ -42,7 +42,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
                 puts("Choose a file you're willing to read.");
                 std::cin >> g_TAR_IN;
 
-                _SA_File tar_in(g_TAR_IN.c_str(), "r");
+                _SA_File tar_in(g_TAR_IN.c_str(), "rb");
 
                 if(!tar_in.f) 
                 goto __target_not_found;
@@ -62,7 +62,7 @@ int _main(int argc, const std::vector<std::string>& argv) {
                 ) {
                     _SA_NameGen(g_TAR_IN.c_str(), i);
                     std::string _v = g_TAR_OUT + "/" + ___SA_NameGen_Str[0];
-                    _SA_File out(_v.c_str(), "w");
+                    _SA_File out(_v.c_str(), "wb");
                     SA_sep(tar_in.f, out.f, i, _SA_File_SIZE);
                 }
 
@@ -88,10 +88,10 @@ int _main(int argc, const std::vector<std::string>& argv) {
                     return _SA_StrGetPostNum(a.string().c_str()) < _SA_StrGetPostNum(b.string().c_str());
                 });
 
-                _SA_File out(g_TAR_OUT.c_str(), "w");
+                _SA_File out(g_TAR_OUT.c_str(), "wb");
 
                 for (const auto& file : files) {
-                    _SA_File f(file.string().c_str(), "r");
+                    _SA_File f(file.string().c_str(), "rb");
                     SA_add(out.f, &f.f, 1);
                     std::cout << file.filename() << std::endl;
                 }
