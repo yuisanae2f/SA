@@ -11,26 +11,26 @@ void SA_sep(
     long oidx, 
     long seplen
 ) {
-    if(!(in && out)) return;
+    if (!(in && out)) return;
+
     fseek(in, 0, SEEK_END);
-    fseek(out, 0, SEEK_END);
     const long in_len = ftell(in);
-    if(in_len == EOF) return;
+    if (in_len == EOF) return;
 
     long 
     istart = oidx * seplen,
     iend = istart + seplen;
 
-    int ___ = 3;
-
-    if(istart >= in_len) return;
-    if(iend > in_len) iend = in_len;
+    if (istart >= in_len) return;
+    if (iend > in_len) iend = in_len;
 
     fseek(in, istart, SEEK_SET);
-    for(int i = istart; i < iend && ___ != EOF; i++) {
-        ___ = fgetc(in);
-        if(___ != EOF)
-        fputc(___, out);
+    int ch; // '___'을 'ch'로 변경하여 의미를 명확히 함
+
+    for (long i = istart; i < iend; i++) {
+        ch = fgetc(in);
+        if (ch == EOF) break; // EOF 체크
+        fputc(ch, out);
     }
 
     return;

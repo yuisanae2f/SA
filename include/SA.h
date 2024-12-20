@@ -15,8 +15,8 @@ void SA_sep(
 
 ae2f_extern ae2f_SHAREDCALL
 void SA_add(
-    FILE* in, 
-    FILE** out, 
+    FILE* out, 
+    FILE** in, 
     long olen
 );
 
