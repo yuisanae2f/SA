@@ -6,7 +6,7 @@ add_subdirectory(Core)
 link_libraries(Core)
 
 
-set(_SA_File_SIZE 300000000 CACHE STRING "Max File Length")
+set(_SA_File_SIZE 8000000 CACHE STRING "Max File Length")
 
 ae2f_CoreLibTent(
     libSA

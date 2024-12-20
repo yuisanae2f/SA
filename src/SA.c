@@ -4,6 +4,10 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+static char _Buff[
+    #include "../include_bin/_SA_FILE_SIZE.h"
+];
+
 ae2f_SHAREDEXPORT 
 void SA_sep(
     FILE* in, 
@@ -25,12 +29,8 @@ void SA_sep(
 
     fseek(in, istart, SEEK_SET);
     int ch; // '___'을 'ch'로 변경하여 의미를 명확히 함
-
-    for (long i = istart; i < iend; i++) {
-        ch = fgetc(in);
-        if (ch == EOF) break; // EOF 체크
-        fputc(ch, out);
-    }
+    const size_t got = fread(_Buff, 1, sizeof(_Buff), in);
+    fwrite(_Buff, 1, got, out);
 
     return;
 }
@@ -44,12 +44,12 @@ void SA_add(
     if(!(in && out)) return;
     fseek(out, 0, SEEK_END);
     int ch;
+    size_t got;
 
     for(size_t i = 0; i < olen; i++) {
         if(!in[i]) continue;
         fseek(in[i], 0, SEEK_SET);
-        while ((ch = fgetc(in[i])) != EOF) {
-            fputc(ch, out);
-        }
+        got = fread(_Buff, 1, sizeof(_Buff), in[i]);
+        fwrite(_Buff, 1, got, out);
     }
 }
